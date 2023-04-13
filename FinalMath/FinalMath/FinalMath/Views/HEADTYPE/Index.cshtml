@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FinalMath.Models.HEADTYPE>
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Head Type</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Head Type</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <p>
+                            @Html.ActionLink("Add New +", "Create")
+                        </p>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HEAD_TYPE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.isActive)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HEAD_TYPE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.isActive)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.HEADTYPE_ID }, new { @class = "btn btn-sm btn-primary" })
+                                            @Html.ActionLink("Details", "Details", new { id = item.HEADTYPE_ID }, new { @class = "btn btn-sm btn-success" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.HEADTYPE_ID }, new { @class = "btn btn-sm btn-danger" })
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,153 @@
+﻿@model FinalMath.Models.EMPLOYEE
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Employee</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Employee</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Details</h2>
+                    </div>
+                    <div class="card-body">
+
+
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_NAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_CONTACT)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_CONTACT)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_EMAIL)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_EMAIL)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_PHOTO)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_PHOTO)
+                            </dd>
+
+                            <dt>
+                                @if (!String.IsNullOrEmpty(Model.EMPLOYEE_PHOTO))
+                                {
+                                    <img src="@Url.Content(Model.EMPLOYEE_PHOTO)" height="100" width="100" />
+                                }
+
+                                @Html.DisplayFor(model => model.EMPLOYEE_PHOTO)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_ADDRESS)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_ADDRESS)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_CNIC)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_CNIC)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_DESIGNATION)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_DESIGNATION)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_DESCRIPTION)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_DESCRIPTION)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_MONTHLY_SALARY)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_MONTHLY_SALARY)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_ALLOWENCES)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_ALLOWENCES)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EMPLOYEE_TYPE)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EMPLOYEE_TYPE)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.IsActive)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.IsActive)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p style="margin-left:10px">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.EMPLOYEE_ID }, new { @class = "btn btn-sm btn-success " })
+                        <a href="@Url.Action("Index", "EMPLOYEE")" class="btn btn-sm btn-primary">Back to List</a>
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

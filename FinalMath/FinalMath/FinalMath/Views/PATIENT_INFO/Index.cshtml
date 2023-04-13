@@ -1,0 +1,308 @@
+﻿@model IEnumerable<FinalMath.Models.PATIENT_INFO>
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Patient_Info</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Patient_Info</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+
+                        <p>
+                            @Html.ActionLink("Create New+", "Create", new { @class = "btn btn-sm btn-primary" })
+                        </p>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.REGISTRATION_NO)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FATHER_NAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DATE_OF_BIRTH)
+                            </th>
+                            <th>DATE_OF_ADMISSION:
+                            </th>
+                            <th>
+                                STAY MONTHS:
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CONTACT):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CATEGORY):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AGE):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CITY):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ADDRESS):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RELIGION):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CHRONIC_MEDICAL_PROBLEM):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CMP_SPECIFY):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.REGULARLY_TAKING_OR_SHOULD_BE_TAKING_PRESCRIBED_MEDICATION):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EDUCATION):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OCCUPATION):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DRUG_TYPE):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.R_O_A):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.REASON_FOR_SUBSTANCE_USE):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HOW_MANY_TIMES_BEFORE_TREATED_FOR_SUBSTANCE_USE):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.REASON_BEHIND_RELAPSE):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HAVING_EVER_BEEN_ARRESTED_AND_CHARGED_FOR_ANY_CRIME):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HC_SPECIFY):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MARITAL_STATUS):
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LIVES_WITH_ANY_ONE_WHO_ABUSES_DRUGS_ALCOHAL):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LDA_SPECIFIER):<br />
+                            </th>
+                            <th>
+                                YOU_HAD_EXPERIENCED_SERIOUS_PROBLEM_WITH_YOUR<br />FAMILY_OTHER_SIGNIFICANT_FAMILY:
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SF_SPECIFY):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.HAS_ANY_ONE_ABUSED_YOU):<br />
+                            </th>
+                            <th>
+                                EXPERIENCED_SERIOUS_DEPRESSION_MOOD<br />SWINGS_WHICH_INTERFARE_WITH_LIFE:
+                            </th>
+                            <th>
+                                EXPERIENCED_SERIOUS_ANXIOUSNESS<br />OR_TENSE_ANXIETY_OR_PANIC_ATTACKS:
+                            </th>
+                            <th>
+                                EXPERIENCES_TROUBLE_CONCENTRATING_UNDERSTANDING_REMEMBERING_VISUAL<br />OR_AUDIO_HALLUCINATIONS:
+                            </th>
+                            <th>
+                                TEMPER_OR_VIOLENT_BEHAVIOUR_CONTROL_PROBLEMS:
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PLAN_TO_HURT_OR_KILL_SOMEONE):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SERIOUS_PLAN_FOR_KILLING_SELF):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SUCIDE_ATTEMPTS):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DATE_OF_DISCHARGE):<br />
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsActive):<br />
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.USER.USER_NAME):<br />
+                            </th>
+                            <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.REGISTRATION_NO)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FATHER_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DATE_OF_BIRTH)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DATE_OF_ADDMISSION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MONTH)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CONTACT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CATEGORY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AGE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CITY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ADDRESS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RELIGION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CHRONIC_MEDICAL_PROBLEM)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CMP_SPECIFY)
+                                        </td>
+                                        <td>
+                                            <br />@Html.DisplayFor(modelItem => item.REGULARLY_TAKING_OR_SHOULD_BE_TAKING_PRESCRIBED_MEDICATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EDUCATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OCCUPATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DRUG_TYPE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.R_O_A)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.REASON_FOR_SUBSTANCE_USE)
+                                        </td>
+                                        <td>
+                                            <br />@Html.DisplayFor(modelItem => item.HOW_MANY_TIMES_BEFORE_TREATED_FOR_SUBSTANCE_USE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.REASON_BEHIND_RELAPSE)
+                                        </td>
+                                        <td>
+                                            <br /> @Html.DisplayFor(modelItem => item.HAVING_EVER_BEEN_ARRESTED_AND_CHARGED_FOR_ANY_CRIME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HC_SPECIFY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MARITAL_STATUS)
+                                        </td>
+                                        <td>
+                                            <br />  @Html.DisplayFor(modelItem => item.LIVES_WITH_ANY_ONE_WHO_ABUSES_DRUGS_ALCOHAL)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LDA_SPECIFIER)
+                                        </td>
+                                        <td>
+                                            <br />@Html.DisplayFor(modelItem => item.YOU_HAD_EXPERIENCED_SERIOUS_PROBLEM_WITH_YOUR_FAMILY_OTHER_SIGNIFICANT_FAMILY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SF_SPECIFY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HAS_ANY_ONE_ABUSED_YOU)
+                                        </td>
+                                        <td>
+                                            <br /> @Html.DisplayFor(modelItem => item.EXPERIENCED_SERIOUS_DEPRESSION_MOOD_SWINGS_WHICH_INTERFARE_WITH_LIFE)
+                                        </td>
+                                        <td>
+                                            <br />@Html.DisplayFor(modelItem => item.EXPERIENCED_SERIOUS_ANXIOUSNESS_OR_TENSE_ANXIETY_OR_PANIC_ATTACKS)
+                                        </td>
+                                        <td>
+                                            <br /> @Html.DisplayFor(modelItem => item.EXPERIENCES_TROUBLE_CONCENTRATING_UNDERSTANDING_REMEMBERING_VISUAL_OR_AUDIO_HALLUCINATIONS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TEMPER_OR_VIOLENT_BEHAVIOUR_CONTROL_PROBLEMS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PLAN_TO_HURT_OR_KILL_SOMEONE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SERIOUS_PLAN_FOR_KILLING_SELF)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SUCIDE_ATTEMPTS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DATE_OF_DISCHARGE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IsActive)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.USER.USER_NAME)
+                                        </td>
+                                        <td>
+
+
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.PATIENT_ID }, new { @class = "btn btn-sm btn-primary" })
+                                            @Html.ActionLink("Details", "Details", new { id = item.PATIENT_ID }, new { @class = "btn btn-sm btn-success" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.PATIENT_ID }, new { @class = "btn btn-sm btn-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

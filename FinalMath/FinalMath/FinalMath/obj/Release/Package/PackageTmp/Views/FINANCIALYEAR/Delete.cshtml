@@ -1,0 +1,105 @@
+﻿@model FinalMath.Models.FINANCIALYEAR
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>FINANCIALYEAR</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Financial Year</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Delete</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <h3>Are you sure you want to delete this?</h3>
+
+                        <div>
+
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FINANCIAL_YEAR)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FINANCIAL_YEAR)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.START_DATE)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.START_DATE)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.END_DATE)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.END_DATE)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OPENING_BALANCE)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OPENING_BALANCE)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.isActive)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.isActive)
+                                </dd>
+
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+                                    <a href="@Url.Action("Index", "FINANCIALYEAR")" class="btn btn-sm btn-primary">Back to List</a>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

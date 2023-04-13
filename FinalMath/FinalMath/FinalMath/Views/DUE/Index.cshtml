@@ -1,0 +1,161 @@
+﻿@model FinalMath.DUEVM
+
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>DUE</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">DUE</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <p>
+                            @Html.ActionLink("Add New +", "Create")
+                        </p>
+                    </div>
+                    @using (Html.BeginForm("Search", "DUE", FormMethod.Get))
+                    {
+                        <div class="row" style="margin-top:20px">
+                            <div style="margin-left:20px">
+                                DateFrom <input type="date" id="datefrom" name="datefrom" />
+
+                            </div>
+                            <div style="margin-left:20px">
+                                DateTo <input type="date" id="dateto" name="dateto" />
+                            </div>
+                            <div style="margin-left:20px">
+                                Voucher <input type="text" id="VoucherNO" name="VoucherNO" />
+                            </div>
+
+
+
+                            <input type="submit" class="btn btn-primary" value="Search" style="margin-left:20px" />
+                        </div>
+                    }
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().DATE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().VOUCHER_NO)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().EXPENSE_AMOUNT)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().INCOME_AMOUNT)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().DESCRIPTION)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().PIC)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().DUESTYPE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().DISTYPE.DISTYPENAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().HEAD.HEAD_NAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().MODES_OF_PAYMENTS.MODES_OF_PAYMENT_NAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().USER.USER_NAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LstDue.FirstOrDefault().VENDOR.VENDOR_NAME)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.LstDue)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DATE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VOUCHER_NO)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EXPENSE_AMOUNT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.INCOME_AMOUNT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                                        </td>
+                                        <td>
+                                            @if (!String.IsNullOrEmpty(item.PIC))
+                                            {
+                                                <img src="@Url.Content(item.PIC)" height="70" width="100" />
+
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DUESTYPE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DISTYPE.DISTYPENAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HEAD.HEAD_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MODES_OF_PAYMENTS.MODES_OF_PAYMENT_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.USER.USER_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VENDOR.VENDOR_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.DUES_ID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.DUES_ID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.DUES_ID })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

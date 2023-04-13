@@ -1,0 +1,160 @@
+﻿@model FinalMath.Models.SALARY
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Salary Sheet</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Salary_Sheet</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Delete</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <h3>Are you sure you want to delete this?</h3>
+
+                        <div>
+
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SALARY_DATE)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.SALARY_DATE)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_NAME)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEE_NAME)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_DESIGNATION)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEE_DESIGNATION)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_ALLOWENCES)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEE_ALLOWENCES);
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.BA_TOTAL_SALARY)
+                                </dt>
+
+                                <dd>
+                                    @{
+                                        Model.BA_TOTAL_SALARY = (decimal.Parse(Model.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY.ToString()) + decimal.Parse(Model.EMPLOYEE.EMPLOYEE_ALLOWENCES)).ToString();
+                                    }
+
+                                    @Html.DisplayFor(model => model.BA_TOTAL_SALARY)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EXTRA_DUTY)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EXTRA_DUTY)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TOTAL_SALARY)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TOTAL_SALARY)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ABSENT_DAYS)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ABSENT_DAYS)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ABSENT_AMOUNT)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ABSENT_AMOUNT)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.BY_CHEQUE)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.BY_CHEQUE)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.BY_CASH)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.BY_CASH)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NET_SALARY)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.NET_SALARY)
+                                </dd>
+
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            <a href="@Url.Action("Index", "SALARies")" class="btn btn-sm btn-primary">Back to List</a>
+
+                        </div>
+                            }
+                        </div>
+                        </div></div></div></div></div></section>

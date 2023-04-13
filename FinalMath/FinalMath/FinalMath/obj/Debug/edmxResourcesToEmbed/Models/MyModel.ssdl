@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbmathModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SALARY">
+    <Key>
+      <PropertyRef Name="SALARY_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_FID" Type="int" Nullable="false" />
+    <Property Name="EXTRA_DUTY" Type="nvarchar(max)" />
+    <Property Name="TOTAL_SALARY" Type="nvarchar(max)" />
+    <Property Name="ADVANCE_AMOUNT" Type="nvarchar(max)" />
+    <Property Name="ABSENT_DAYS" Type="nvarchar(max)" />
+    <Property Name="BY_CHEQUE" Type="nvarchar(max)" />
+    <Property Name="BY_CASH" Type="nvarchar(max)" />
+    <Property Name="NET_SALARY" Type="nvarchar(max)" />
+    <Property Name="SALARY_DATE" Type="date" />
+    <Property Name="ABSENT_AMOUNT" Type="nvarchar(max)" />
+    <Property Name="SALARY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISHEADS">
+    <Key>
+      <PropertyRef Name="DISHEAD_ID" />
+    </Key>
+    <Property Name="DISHEAD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DISTYPEFID" Type="int" />
+    <Property Name="HEADS_FID" Type="int" />
+    <Property Name="AMOUNT" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="DISTYPE">
+    <Key>
+      <PropertyRef Name="DISTYPE_ID" />
+    </Key>
+    <Property Name="DISTYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DISTYPENAME" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DUES">
+    <Key>
+      <PropertyRef Name="DUES_ID" />
+    </Key>
+    <Property Name="DUES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DATE" Type="date" />
+    <Property Name="VOUCHER_NO" Type="nvarchar" MaxLength="50" />
+    <Property Name="VENDOR_FID" Type="int" />
+    <Property Name="USER_FID" Type="int" />
+    <Property Name="HEAD_FID" Type="int" />
+    <Property Name="MODES_OF_PAYMENTS_FID" Type="int" />
+    <Property Name="EXPENSE_AMOUNT" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="INCOME_AMOUNT" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="PIC" Type="nvarchar(max)" />
+    <Property Name="DISTYPE_FID" Type="int" Nullable="false" />
+    <Property Name="DUESTYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="exp_type" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="EMPLOYEES">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_CONTACT" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_EMAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_PHOTO" Type="nvarchar(max)" />
+    <Property Name="EMPLOYEE_ADDRESS" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_CNIC" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_DESIGNATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_MONTHLY_SALARY" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="EMPLOYEE_DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="EMPLOYEE_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMPLOYEE_ALLOWENCES" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FINANCIALYEARS">
+    <Key>
+      <PropertyRef Name="FINANCIALYEAR_ID" />
+    </Key>
+    <Property Name="FINANCIALYEAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FINANCIAL_YEAR" Type="nvarchar" MaxLength="50" />
+    <Property Name="START_DATE" Type="date" />
+    <Property Name="END_DATE" Type="date" />
+    <Property Name="OPENING_BALANCE" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HEADS">
+    <Key>
+      <PropertyRef Name="HEAD_ID" />
+    </Key>
+    <Property Name="HEAD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HEADTYPE_FID" Type="int" />
+    <Property Name="HEAD_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HEADTYPES">
+    <Key>
+      <PropertyRef Name="HEADTYPE_ID" />
+    </Key>
+    <Property Name="HEADTYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HEAD_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODES_OF_PAYMENTS">
+    <Key>
+      <PropertyRef Name="MODES_OF_PAYMENTS_ID" />
+    </Key>
+    <Property Name="MODES_OF_PAYMENTS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MODES_OF_PAYMENT_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PATIENT_INFO">
+    <Key>
+      <PropertyRef Name="PATIENT_ID" />
+    </Key>
+    <Property Name="PATIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REGISTRATION_NO" Type="nvarchar" MaxLength="50" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="FATHER_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="DATE_OF_BIRTH" Type="date" />
+    <Property Name="DATE_OF_ADDMISSION" Type="date" />
+    <Property Name="DATE_OF_DISCHARGE" Type="date" />
+    <Property Name="MONTH" Type="nvarchar" MaxLength="50" />
+    <Property Name="CONTACT" Type="nvarchar" MaxLength="50" />
+    <Property Name="CATEGORY" Type="nvarchar" MaxLength="50" />
+    <Property Name="AGE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CITY" Type="nvarchar" MaxLength="50" />
+    <Property Name="ADDRESS" Type="nvarchar(max)" />
+    <Property Name="RELIGION" Type="nvarchar" MaxLength="50" />
+    <Property Name="CHRONIC_MEDICAL_PROBLEM" Type="nvarchar(max)" />
+    <Property Name="CMP_SPECIFY" Type="nvarchar(max)" />
+    <Property Name="REGULARLY_TAKING_OR_SHOULD_BE_TAKING_PRESCRIBED_MEDICATION" Type="nvarchar(max)" />
+    <Property Name="EDUCATION" Type="nvarchar(max)" />
+    <Property Name="OCCUPATION" Type="nvarchar(max)" />
+    <Property Name="DRUG_TYPE" Type="nvarchar(max)" />
+    <Property Name="R_O_A" Type="nvarchar(max)" />
+    <Property Name="REASON_FOR_SUBSTANCE_USE" Type="nvarchar(max)" />
+    <Property Name="HOW_MANY_TIMES_BEFORE_TREATED_FOR_SUBSTANCE_USE" Type="nvarchar(max)" />
+    <Property Name="REASON_BEHIND_RELAPSE" Type="nvarchar(max)" />
+    <Property Name="HAVING_EVER_BEEN_ARRESTED_AND_CHARGED_FOR_ANY_CRIME" Type="nvarchar(max)" />
+    <Property Name="HC_SPECIFY" Type="nvarchar(max)" />
+    <Property Name="MARITAL_STATUS" Type="nvarchar(max)" />
+    <Property Name="LIVES_WITH_ANY_ONE_WHO_ABUSES_DRUGS_ALCOHAL" Type="nvarchar(max)" />
+    <Property Name="LDA_SPECIFIER" Type="nvarchar(max)" />
+    <Property Name="YOU_HAD_EXPERIENCED_SERIOUS_PROBLEM_WITH_YOUR_FAMILY_OTHER_SIGNIFICANT_FAMILY" Type="nvarchar(max)" />
+    <Property Name="SF_SPECIFY" Type="nvarchar(max)" />
+    <Property Name="HAS_ANY_ONE_ABUSED_YOU" Type="nvarchar(max)" />
+    <Property Name="EXPERIENCED_SERIOUS_DEPRESSION_MOOD_SWINGS_WHICH_INTERFARE_WITH_LIFE" Type="nvarchar(max)" />
+    <Property Name="EXPERIENCED_SERIOUS_ANXIOUSNESS_OR_TENSE_ANXIETY_OR_PANIC_ATTACKS" Type="nvarchar(max)" />
+    <Property Name="EXPERIENCES_TROUBLE_CONCENTRATING_UNDERSTANDING_REMEMBERING_VISUAL_OR_AUDIO_HALLUCINATIONS" Type="nvarchar(max)" />
+    <Property Name="TEMPER_OR_VIOLENT_BEHAVIOUR_CONTROL_PROBLEMS" Type="nvarchar(max)" />
+    <Property Name="PLAN_TO_HURT_OR_KILL_SOMEONE" Type="nvarchar(max)" />
+    <Property Name="SERIOUS_PLAN_FOR_KILLING_SELF" Type="nvarchar(max)" />
+    <Property Name="SUCIDE_ATTEMPTS" Type="nvarchar(max)" />
+    <Property Name="USER_FID" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERTYPE_FID" Type="int" />
+    <Property Name="EMPLOYEE_FID" Type="int" />
+    <Property Name="USER_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERTYPES">
+    <Key>
+      <PropertyRef Name="USERTYPE_ID" />
+    </Key>
+    <Property Name="USERTYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VENDORS">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VENDOR_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="VENDOR_PIC" Type="nvarchar(max)" />
+    <Property Name="VENDOR_ADDRESS" Type="nvarchar(max)" />
+    <Property Name="VENDOR_PHONE" Type="nvarchar" MaxLength="50" />
+    <Property Name="VENDOR_DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DISHEADS_DISTYPE">
+    <End Role="DISTYPE" Type="Self.DISTYPE" Multiplicity="0..1" />
+    <End Role="DISHEADS" Type="Self.DISHEADS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTYPE">
+        <PropertyRef Name="DISTYPE_ID" />
+      </Principal>
+      <Dependent Role="DISHEADS">
+        <PropertyRef Name="DISTYPEFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISHEADS_HEADS">
+    <End Role="HEADS" Type="Self.HEADS" Multiplicity="0..1" />
+    <End Role="DISHEADS" Type="Self.DISHEADS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADS">
+        <PropertyRef Name="HEAD_ID" />
+      </Principal>
+      <Dependent Role="DISHEADS">
+        <PropertyRef Name="HEADS_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_DISTYPE">
+    <End Role="DISTYPE" Type="Self.DISTYPE" Multiplicity="1" />
+    <End Role="DUES" Type="Self.DUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTYPE">
+        <PropertyRef Name="DISTYPE_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="DISTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_HEADS">
+    <End Role="HEADS" Type="Self.HEADS" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADS">
+        <PropertyRef Name="HEAD_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="HEAD_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_MODES_OF_PAYMENTS">
+    <End Role="MODES_OF_PAYMENTS" Type="Self.MODES_OF_PAYMENTS" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODES_OF_PAYMENTS">
+        <PropertyRef Name="MODES_OF_PAYMENTS_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="MODES_OF_PAYMENTS_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="USER_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_VENDORS">
+    <End Role="VENDORS" Type="Self.VENDORS" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENDORS">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="VENDOR_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PATIENT_INFO_USER">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="PATIENT_INFO" Type="Self.PATIENT_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="PATIENT_INFO">
+        <PropertyRef Name="USER_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salary">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SALARY" Type="Self.SALARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALARY">
+        <PropertyRef Name="EMPLOYEE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_HEADTYPE">
+    <End Role="HEADTYPES" Type="Self.HEADTYPES" Multiplicity="0..1" />
+    <End Role="HEADS" Type="Self.HEADS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADTYPES">
+        <PropertyRef Name="HEADTYPE_ID" />
+      </Principal>
+      <Dependent Role="HEADS">
+        <PropertyRef Name="HEADTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_EMPLOYEE">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEES" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="EMPLOYEE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USERTYPE">
+    <End Role="USERTYPES" Type="Self.USERTYPES" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERTYPES">
+        <PropertyRef Name="USERTYPE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="USERTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbmathModelStoreContainer">
+    <EntitySet Name="SALARY" EntityType="Self.SALARY" Schema="dbmath" store:Type="Tables" />
+    <EntitySet Name="DISHEADS" EntityType="Self.DISHEADS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISTYPE" EntityType="Self.DISTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DUES" EntityType="Self.DUES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FINANCIALYEARS" EntityType="Self.FINANCIALYEARS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HEADS" EntityType="Self.HEADS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HEADTYPES" EntityType="Self.HEADTYPES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODES_OF_PAYMENTS" EntityType="Self.MODES_OF_PAYMENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PATIENT_INFO" EntityType="Self.PATIENT_INFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERTYPES" EntityType="Self.USERTYPES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VENDORS" EntityType="Self.VENDORS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DISHEADS_DISTYPE" Association="Self.FK_DISHEADS_DISTYPE">
+      <End Role="DISTYPE" EntitySet="DISTYPE" />
+      <End Role="DISHEADS" EntitySet="DISHEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISHEADS_HEADS" Association="Self.FK_DISHEADS_HEADS">
+      <End Role="HEADS" EntitySet="HEADS" />
+      <End Role="DISHEADS" EntitySet="DISHEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_DISTYPE" Association="Self.FK_DUES_DISTYPE">
+      <End Role="DISTYPE" EntitySet="DISTYPE" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_HEADS" Association="Self.FK_DUES_HEADS">
+      <End Role="HEADS" EntitySet="HEADS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_MODES_OF_PAYMENTS" Association="Self.FK_DUES_MODES_OF_PAYMENTS">
+      <End Role="MODES_OF_PAYMENTS" EntitySet="MODES_OF_PAYMENTS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_USERS" Association="Self.FK_DUES_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_VENDORS" Association="Self.FK_DUES_VENDORS">
+      <End Role="VENDORS" EntitySet="VENDORS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PATIENT_INFO_USER" Association="Self.FK_PATIENT_INFO_USER">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="PATIENT_INFO" EntitySet="PATIENT_INFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salary" Association="Self.FK_Salary">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="SALARY" EntitySet="SALARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_HEADTYPE" Association="Self.FK_Table_1_HEADTYPE">
+      <End Role="HEADTYPES" EntitySet="HEADTYPES" />
+      <End Role="HEADS" EntitySet="HEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_EMPLOYEE" Association="Self.FK_USER_EMPLOYEE">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USERTYPE" Association="Self.FK_USER_USERTYPE">
+      <End Role="USERTYPES" EntitySet="USERTYPES" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

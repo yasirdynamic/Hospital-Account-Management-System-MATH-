@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b037382d49774599a7991ceda469d673" Name="Diagram1">
+        <EntityTypeShape EntityType="dbmathModel.SALARY" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.DISHEAD" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.DISTYPE" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.DUE" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.EMPLOYEE" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.FINANCIALYEAR" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.HEAD" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.HEADTYPE" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.MODES_OF_PAYMENTS" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.PATIENT_INFO" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.USER" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.USERTYPE" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbmathModel.VENDOR" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="dbmathModel.FK_Salary" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DISHEADS_DISTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DISHEADS_HEADS" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DUES_DISTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DUES_HEADS" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DUES_MODES_OF_PAYMENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DUES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_DUES_VENDORS" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_USER_EMPLOYEE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_Table_1_HEADTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_PATIENT_INFO_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="dbmathModel.FK_USER_USERTYPE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<FinalMath.Models.EMPLOYEE>
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Employee</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Employee</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+
+                        <p>
+                            @Html.ActionLink("Create New +", "Create")
+                        </p>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_NAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_CONTACT)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_EMAIL)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_PHOTO)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_ADDRESS)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_CNIC)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_DESIGNATION)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_DESCRIPTION)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_MONTHLY_SALARY)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_ALLOWENCES)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EMPLOYEE_TYPE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IsActive)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_CONTACT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_EMAIL)
+                                    </td>
+                                    <td>
+                                        @if (!String.IsNullOrEmpty(item.EMPLOYEE_PHOTO))
+                                        {
+                                            <img src="@Url.Content(item.EMPLOYEE_PHOTO)" height="70" width="100" />
+
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_ADDRESS)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_CNIC)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_DESIGNATION)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_DESCRIPTION)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_MONTHLY_SALARY)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_ALLOWENCES)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEE_TYPE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.EMPLOYEE_ID }, new { @class = "btn btn-sm btn-primary" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.EMPLOYEE_ID }, new { @class = "btn btn-sm btn-success" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.EMPLOYEE_ID }, new { @class = "btn btn-sm btn-danger" })
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    

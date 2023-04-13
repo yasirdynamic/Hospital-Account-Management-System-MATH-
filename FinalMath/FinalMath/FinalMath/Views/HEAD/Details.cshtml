@@ -1,0 +1,78 @@
+﻿@model FinalMath.Models.HEAD
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>HEADS</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Heads</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Details</h2>
+                    </div>
+                    <div class="card-body">
+
+
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HEAD_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HEAD_NAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.isActive)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.isActive)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HEADTYPE.HEAD_TYPE)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HEADTYPE.HEAD_TYPE)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.HEAD_ID }, new { @class = "btn btn-sm btn-success" })
+                        <a href="@Url.Action("Index", "HEAD")" class="btn btn-sm btn-primary">Back to List</a>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

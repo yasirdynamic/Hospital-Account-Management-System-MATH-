@@ -1,0 +1,152 @@
+﻿@model IEnumerable<FinalMath.Models.SALARY>
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Salary Sheet</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Salary_Sheet</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.SALARY_DATE)
+                                        </th>
+
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_NAME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_DESIGNATION)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_ALLOWENCES)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BA_TOTAL_SALARY)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EXTRA_DUTY)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.TOTAL_SALARY)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ADVANCE_AMOUNT)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ABSENT_DAYS)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ABSENT_AMOUNT)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BY_CHEQUE)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BY_CASH)
+                                        </th>
+
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NET_SALARY)
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SALARY_DATE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EMPLOYEE.EMPLOYEE_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EMPLOYEE.EMPLOYEE_DESIGNATION)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EMPLOYEE.EMPLOYEE_ALLOWENCES)
+                                        </td>
+                                        <td>
+                                            @{ 
+                                                item.BA_TOTAL_SALARY = (decimal.Parse(item.EMPLOYEE.EMPLOYEE_MONTHLY_SALARY.ToString()) + decimal.Parse(item.EMPLOYEE.EMPLOYEE_ALLOWENCES)).ToString();
+                                            }
+                                            @Html.DisplayFor(modelItem => item.BA_TOTAL_SALARY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EXTRA_DUTY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TOTAL_SALARY)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ADVANCE_AMOUNT)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ABSENT_DAYS)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ABSENT_AMOUNT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BY_CHEQUE)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BY_CASH)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NET_SALARY)
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.SALARY_ID }, new { @class = "btn btn-sm btn-primary" })
+                                            @Html.ActionLink("Details", "Details", new { id = item.SALARY_ID }, new { @class = "btn btn-sm btn-success" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.SALARY_ID }, new { @class = "btn btn-sm btn-danger" })
+                                        </td>
+                                    </tr>
+                                    }
+                                    </tbody>
+                            </table>
+                            </div></div></div></div></div></div></section>

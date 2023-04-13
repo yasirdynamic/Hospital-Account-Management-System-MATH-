@@ -1,0 +1,150 @@
+﻿@model FinalMath.Models.DUE
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>DUE</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">DUE</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Details</h2>
+                    </div>
+                    <div class="card-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DATE)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DATE)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.VOUCHER_NO)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.VOUCHER_NO)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EXPENSE_AMOUNT)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EXPENSE_AMOUNT)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.INCOME_AMOUNT)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.INCOME_AMOUNT)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DESCRIPTION)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DESCRIPTION)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PIC)
+                            </dt>
+
+                            <dd>
+                                @if (!String.IsNullOrEmpty(Model.PIC))
+                                {
+                                    <img src="@Url.Content(Model.PIC)" height="100" width="100" />
+                                }
+
+                                @Html.DisplayFor(model => model.PIC)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DUESTYPE)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DUESTYPE)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DISTYPE.DISTYPENAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DISTYPE.DISTYPENAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HEAD.HEAD_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.HEAD.HEAD_NAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MODES_OF_PAYMENTS.MODES_OF_PAYMENT_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.MODES_OF_PAYMENTS.MODES_OF_PAYMENT_NAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.USER.USER_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.USER.USER_NAME)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.VENDOR.VENDOR_NAME)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.VENDOR.VENDOR_NAME)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.DUES_ID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

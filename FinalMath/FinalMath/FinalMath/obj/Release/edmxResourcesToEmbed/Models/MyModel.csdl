@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbmathModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SALARY">
+    <Key>
+      <PropertyRef Name="SALARY_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_FID" Type="Int32" Nullable="false" />
+    <Property Name="EXTRA_DUTY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TOTAL_SALARY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ADVANCE_AMOUNT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ABSENT_DAYS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BY_CHEQUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BY_CASH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NET_SALARY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SALARY_DATE" Type="DateTime" Precision="0" />
+    <Property Name="ABSENT_AMOUNT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SALARY_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_Salary" FromRole="SALARY" ToRole="EMPLOYEES" />
+  </EntityType>
+  <EntityType Name="DISHEAD">
+    <Key>
+      <PropertyRef Name="DISHEAD_ID" />
+    </Key>
+    <Property Name="DISHEAD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DISTYPEFID" Type="Int32" />
+    <Property Name="HEADS_FID" Type="Int32" />
+    <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DISTYPE" Relationship="Self.FK_DISHEADS_DISTYPE" FromRole="DISHEADS" ToRole="DISTYPE" />
+    <NavigationProperty Name="HEAD" Relationship="Self.FK_DISHEADS_HEADS" FromRole="DISHEADS" ToRole="HEADS" />
+  </EntityType>
+  <EntityType Name="DISTYPE">
+    <Key>
+      <PropertyRef Name="DISTYPE_ID" />
+    </Key>
+    <Property Name="DISTYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DISTYPENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DISHEADS" Relationship="Self.FK_DISHEADS_DISTYPE" FromRole="DISTYPE" ToRole="DISHEADS" />
+    <NavigationProperty Name="DUES" Relationship="Self.FK_DUES_DISTYPE" FromRole="DISTYPE" ToRole="DUES" />
+  </EntityType>
+  <EntityType Name="DUE">
+    <Key>
+      <PropertyRef Name="DUES_ID" />
+    </Key>
+    <Property Name="DUES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DATE" Type="DateTime" Precision="0" />
+    <Property Name="VOUCHER_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VENDOR_FID" Type="Int32" />
+    <Property Name="USER_FID" Type="Int32" />
+    <Property Name="HEAD_FID" Type="Int32" />
+    <Property Name="MODES_OF_PAYMENTS_FID" Type="Int32" />
+    <Property Name="EXPENSE_AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="INCOME_AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PIC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DISTYPE_FID" Type="Int32" Nullable="false" />
+    <Property Name="DUESTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="exp_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DISTYPE" Relationship="Self.FK_DUES_DISTYPE" FromRole="DUES" ToRole="DISTYPE" />
+    <NavigationProperty Name="HEAD" Relationship="Self.FK_DUES_HEADS" FromRole="DUES" ToRole="HEADS" />
+    <NavigationProperty Name="MODES_OF_PAYMENTS" Relationship="Self.FK_DUES_MODES_OF_PAYMENTS" FromRole="DUES" ToRole="MODES_OF_PAYMENTS" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_DUES_USERS" FromRole="DUES" ToRole="USERS" />
+    <NavigationProperty Name="VENDOR" Relationship="Self.FK_DUES_VENDORS" FromRole="DUES" ToRole="VENDORS" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_MONTHLY_SALARY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EMPLOYEE_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="EMPLOYEE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYEE_ALLOWENCES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SALARies" Relationship="Self.FK_Salary" FromRole="EMPLOYEES" ToRole="SALARY" />
+    <NavigationProperty Name="USERS" Relationship="Self.FK_USER_EMPLOYEE" FromRole="EMPLOYEES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="FINANCIALYEAR">
+    <Key>
+      <PropertyRef Name="FINANCIALYEAR_ID" />
+    </Key>
+    <Property Name="FINANCIALYEAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FINANCIAL_YEAR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="START_DATE" Type="DateTime" Precision="0" />
+    <Property Name="END_DATE" Type="DateTime" Precision="0" />
+    <Property Name="OPENING_BALANCE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HEAD">
+    <Key>
+      <PropertyRef Name="HEAD_ID" />
+    </Key>
+    <Property Name="HEAD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HEADTYPE_FID" Type="Int32" />
+    <Property Name="HEAD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DISHEADS" Relationship="Self.FK_DISHEADS_HEADS" FromRole="HEADS" ToRole="DISHEADS" />
+    <NavigationProperty Name="DUES" Relationship="Self.FK_DUES_HEADS" FromRole="HEADS" ToRole="DUES" />
+    <NavigationProperty Name="HEADTYPE" Relationship="Self.FK_Table_1_HEADTYPE" FromRole="HEADS" ToRole="HEADTYPES" />
+  </EntityType>
+  <EntityType Name="HEADTYPE">
+    <Key>
+      <PropertyRef Name="HEADTYPE_ID" />
+    </Key>
+    <Property Name="HEADTYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HEAD_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HEADS" Relationship="Self.FK_Table_1_HEADTYPE" FromRole="HEADTYPES" ToRole="HEADS" />
+  </EntityType>
+  <EntityType Name="MODES_OF_PAYMENTS">
+    <Key>
+      <PropertyRef Name="MODES_OF_PAYMENTS_ID" />
+    </Key>
+    <Property Name="MODES_OF_PAYMENTS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MODES_OF_PAYMENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DUES" Relationship="Self.FK_DUES_MODES_OF_PAYMENTS" FromRole="MODES_OF_PAYMENTS" ToRole="DUES" />
+  </EntityType>
+  <EntityType Name="PATIENT_INFO">
+    <Key>
+      <PropertyRef Name="PATIENT_ID" />
+    </Key>
+    <Property Name="PATIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REGISTRATION_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" Precision="0" />
+    <Property Name="DATE_OF_ADDMISSION" Type="DateTime" Precision="0" />
+    <Property Name="DATE_OF_DISCHARGE" Type="DateTime" Precision="0" />
+    <Property Name="MONTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RELIGION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CHRONIC_MEDICAL_PROBLEM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CMP_SPECIFY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="REGULARLY_TAKING_OR_SHOULD_BE_TAKING_PRESCRIBED_MEDICATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EDUCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OCCUPATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DRUG_TYPE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="R_O_A" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="REASON_FOR_SUBSTANCE_USE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HOW_MANY_TIMES_BEFORE_TREATED_FOR_SUBSTANCE_USE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="REASON_BEHIND_RELAPSE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HAVING_EVER_BEEN_ARRESTED_AND_CHARGED_FOR_ANY_CRIME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HC_SPECIFY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MARITAL_STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LIVES_WITH_ANY_ONE_WHO_ABUSES_DRUGS_ALCOHAL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LDA_SPECIFIER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YOU_HAD_EXPERIENCED_SERIOUS_PROBLEM_WITH_YOUR_FAMILY_OTHER_SIGNIFICANT_FAMILY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SF_SPECIFY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HAS_ANY_ONE_ABUSED_YOU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EXPERIENCED_SERIOUS_DEPRESSION_MOOD_SWINGS_WHICH_INTERFARE_WITH_LIFE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EXPERIENCED_SERIOUS_ANXIOUSNESS_OR_TENSE_ANXIETY_OR_PANIC_ATTACKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EXPERIENCES_TROUBLE_CONCENTRATING_UNDERSTANDING_REMEMBERING_VISUAL_OR_AUDIO_HALLUCINATIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TEMPER_OR_VIOLENT_BEHAVIOUR_CONTROL_PROBLEMS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PLAN_TO_HURT_OR_KILL_SOMEONE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SERIOUS_PLAN_FOR_KILLING_SELF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SUCIDE_ATTEMPTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="USER_FID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_PATIENT_INFO_USER" FromRole="PATIENT_INFO" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERTYPE_FID" Type="Int32" />
+    <Property Name="EMPLOYEE_FID" Type="Int32" />
+    <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DUES" Relationship="Self.FK_DUES_USERS" FromRole="USERS" ToRole="DUES" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_USER_EMPLOYEE" FromRole="USERS" ToRole="EMPLOYEES" />
+    <NavigationProperty Name="PATIENT_INFO" Relationship="Self.FK_PATIENT_INFO_USER" FromRole="USERS" ToRole="PATIENT_INFO" />
+    <NavigationProperty Name="USERTYPE" Relationship="Self.FK_USER_USERTYPE" FromRole="USERS" ToRole="USERTYPES" />
+  </EntityType>
+  <EntityType Name="USERTYPE">
+    <Key>
+      <PropertyRef Name="USERTYPE_ID" />
+    </Key>
+    <Property Name="USERTYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USERS" Relationship="Self.FK_USER_USERTYPE" FromRole="USERTYPES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="VENDOR">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VENDOR_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VENDOR_PIC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VENDOR_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VENDOR_PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VENDOR_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DUES" Relationship="Self.FK_DUES_VENDORS" FromRole="VENDORS" ToRole="DUES" />
+  </EntityType>
+  <Association Name="FK_Salary">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SALARY" Type="Self.SALARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="SALARY">
+        <PropertyRef Name="EMPLOYEE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISHEADS_DISTYPE">
+    <End Role="DISTYPE" Type="Self.DISTYPE" Multiplicity="0..1" />
+    <End Role="DISHEADS" Type="Self.DISHEAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTYPE">
+        <PropertyRef Name="DISTYPE_ID" />
+      </Principal>
+      <Dependent Role="DISHEADS">
+        <PropertyRef Name="DISTYPEFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISHEADS_HEADS">
+    <End Role="HEADS" Type="Self.HEAD" Multiplicity="0..1" />
+    <End Role="DISHEADS" Type="Self.DISHEAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADS">
+        <PropertyRef Name="HEAD_ID" />
+      </Principal>
+      <Dependent Role="DISHEADS">
+        <PropertyRef Name="HEADS_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_DISTYPE">
+    <End Role="DISTYPE" Type="Self.DISTYPE" Multiplicity="1" />
+    <End Role="DUES" Type="Self.DUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTYPE">
+        <PropertyRef Name="DISTYPE_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="DISTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_HEADS">
+    <End Role="HEADS" Type="Self.HEAD" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADS">
+        <PropertyRef Name="HEAD_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="HEAD_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_MODES_OF_PAYMENTS">
+    <End Role="MODES_OF_PAYMENTS" Type="Self.MODES_OF_PAYMENTS" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODES_OF_PAYMENTS">
+        <PropertyRef Name="MODES_OF_PAYMENTS_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="MODES_OF_PAYMENTS_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_USERS">
+    <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="USER_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUES_VENDORS">
+    <End Role="VENDORS" Type="Self.VENDOR" Multiplicity="0..1" />
+    <End Role="DUES" Type="Self.DUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENDORS">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="DUES">
+        <PropertyRef Name="VENDOR_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_EMPLOYEE">
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEES">
+        <PropertyRef Name="EMPLOYEE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="EMPLOYEE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_HEADTYPE">
+    <End Role="HEADTYPES" Type="Self.HEADTYPE" Multiplicity="0..1" />
+    <End Role="HEADS" Type="Self.HEAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HEADTYPES">
+        <PropertyRef Name="HEADTYPE_ID" />
+      </Principal>
+      <Dependent Role="HEADS">
+        <PropertyRef Name="HEADTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PATIENT_INFO_USER">
+    <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="PATIENT_INFO" Type="Self.PATIENT_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="PATIENT_INFO">
+        <PropertyRef Name="USER_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_USERTYPE">
+    <End Role="USERTYPES" Type="Self.USERTYPE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERTYPES">
+        <PropertyRef Name="USERTYPE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="USERTYPE_FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbmathEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SALARies" EntityType="Self.SALARY" />
+    <EntitySet Name="DISHEADS" EntityType="Self.DISHEAD" />
+    <EntitySet Name="DISTYPEs" EntityType="Self.DISTYPE" />
+    <EntitySet Name="DUES" EntityType="Self.DUE" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="FINANCIALYEARS" EntityType="Self.FINANCIALYEAR" />
+    <EntitySet Name="HEADS" EntityType="Self.HEAD" />
+    <EntitySet Name="HEADTYPES" EntityType="Self.HEADTYPE" />
+    <EntitySet Name="MODES_OF_PAYMENTS" EntityType="Self.MODES_OF_PAYMENTS" />
+    <EntitySet Name="PATIENT_INFO" EntityType="Self.PATIENT_INFO" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <EntitySet Name="USERTYPES" EntityType="Self.USERTYPE" />
+    <EntitySet Name="VENDORS" EntityType="Self.VENDOR" />
+    <AssociationSet Name="FK_Salary" Association="Self.FK_Salary">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="SALARY" EntitySet="SALARies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISHEADS_DISTYPE" Association="Self.FK_DISHEADS_DISTYPE">
+      <End Role="DISTYPE" EntitySet="DISTYPEs" />
+      <End Role="DISHEADS" EntitySet="DISHEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISHEADS_HEADS" Association="Self.FK_DISHEADS_HEADS">
+      <End Role="HEADS" EntitySet="HEADS" />
+      <End Role="DISHEADS" EntitySet="DISHEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_DISTYPE" Association="Self.FK_DUES_DISTYPE">
+      <End Role="DISTYPE" EntitySet="DISTYPEs" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_HEADS" Association="Self.FK_DUES_HEADS">
+      <End Role="HEADS" EntitySet="HEADS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_MODES_OF_PAYMENTS" Association="Self.FK_DUES_MODES_OF_PAYMENTS">
+      <End Role="MODES_OF_PAYMENTS" EntitySet="MODES_OF_PAYMENTS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_USERS" Association="Self.FK_DUES_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUES_VENDORS" Association="Self.FK_DUES_VENDORS">
+      <End Role="VENDORS" EntitySet="VENDORS" />
+      <End Role="DUES" EntitySet="DUES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_EMPLOYEE" Association="Self.FK_USER_EMPLOYEE">
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_HEADTYPE" Association="Self.FK_Table_1_HEADTYPE">
+      <End Role="HEADTYPES" EntitySet="HEADTYPES" />
+      <End Role="HEADS" EntitySet="HEADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PATIENT_INFO_USER" Association="Self.FK_PATIENT_INFO_USER">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="PATIENT_INFO" EntitySet="PATIENT_INFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_USERTYPE" Association="Self.FK_USER_USERTYPE">
+      <End Role="USERTYPES" EntitySet="USERTYPES" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

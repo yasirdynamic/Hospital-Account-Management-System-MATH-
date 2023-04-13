@@ -1,0 +1,181 @@
+﻿@model FinalMath.Models.EMPLOYEE
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Employee</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Employee</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+@using (Html.BeginForm("Create", "EMPLOYEE", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Create</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.LabelFor(model => model.EMPLOYEE_NAME, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_NAME, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_CONTACT, htmlAttributes: new { @class = "control-label col-md-12" })
+                                @Html.EditorFor(model => model.EMPLOYEE_CONTACT, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_CONTACT, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_EMAIL, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_EMAIL, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_PHOTO, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                <input type="file" name="emp_photo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_ADDRESS, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_ADDRESS, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_CNIC, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_CNIC, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_CNIC, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_DESIGNATION, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_DESIGNATION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_DESIGNATION, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_DESCRIPTION, new { htmlAttributes = new { @class = "form-control multiline" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_DESCRIPTION, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_MONTHLY_SALARY, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_MONTHLY_SALARY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_MONTHLY_SALARY, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_ALLOWENCES, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.EMPLOYEE_ALLOWENCES, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMPLOYEE_ALLOWENCES, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EMPLOYEE_TYPE, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <select name="emp_type" class="form-control">
+                                    <option>Permanent</option>
+                                    <option>Daily Wages</option>
+                                </select>
+                                  @Html.ValidationMessageFor(model => model.EMPLOYEE_TYPE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-12" })
+
+                                @Html.EditorFor(model => model.IsActive)
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group">
+                            <div class="col-md-offset-6 col-md-12">
+                                <input type="submit" value="Create" class="btn btn-sm btn-success" />
+                                <a href="@Url.Action("Index","EMPLOYEE")" class="btn btn-sm btn-primary">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+}

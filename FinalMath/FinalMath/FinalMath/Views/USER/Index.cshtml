@@ -1,0 +1,101 @@
+﻿@model IEnumerable<FinalMath.Models.USER>
+
+
+@if (Session["Admin"] != null)
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+else
+{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDirector.cshtml";
+}
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Users</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Users</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>
+                                @Html.ActionLink("Add New +", "Create")
+                            </p>
+                        </div>
+
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.USER_NAME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.USER_PASSWORD)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IsActive)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEE_NAME)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.USERTYPE.USER_TYPE)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.USER_NAME)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.USER_PASSWORD)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IsActive)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EMPLOYEE.EMPLOYEE_NAME)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.USERTYPE.USER_TYPE)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.USER_ID }, new { @class = "btn btn-sm btn-primary" })
+                                                @Html.ActionLink("Details", "Details", new { id = item.USER_ID }, new { @class = "btn btn-sm btn-success" })
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.USER_ID }, new { @class = "btn btn-sm btn-danger" })
+
+
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
